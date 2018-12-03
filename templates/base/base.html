@@ -1,0 +1,29 @@
+{% load staticfiles %}   <!--加载静态方法-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+      <!--设置字符集、浏览器优先渲染模式以及可视区域设置等，不用修改，按模板默认的就行-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{% block title %}base{% endblock %}</title>  <!--通过模板设置title动态加载-->
+
+    <!-- Bootstrap  将放入static下对应的内容加载进来，导入bootstrap样式文件，通过模板设置动态加载-->
+    <link href="{% static '/bootstrap-3.3.7-dist/css/bootstrap.css' %}" rel="stylesheet">
+    {%  block css %}{% endblock %} <!--通过模板设置css动态加载-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]><!--用于支持ie9以下的版本支持h5,按alt+enter点击下载即可-->
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <!--  导入jquery插件,通过模板设置动态加载 -->
+    <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+    <!--  导入bootstrap的js文件,通过模板设置动态加载-->
+    <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+  </head>
+<body>
+{% include 'base/nav.html' %}
+{% block content %}主要内容{% endblock %}
+</body>

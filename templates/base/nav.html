@@ -1,0 +1,16 @@
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">主页</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            {% if request.user.username %}   <!--views.py文件中登陆成功后赋值未True，这里拿到True后就进入判断语句-->
+                <li><a href="#">当前在线：{{ request.user.username }}</a></li>   <!--这里显示的是views文件中输入的username，也就是当前登陆成功的用户名-->
+                <li><a href="/logout/">登出</a></li>      <!--导航条点击登出跳转至登出页面-->
+            {% else %}   <!--如果登陆成功就不会执行下面的代码，避免出现登陆成功后依然显示注册登陆的情况,另外登出或未登陆时访问网页才会出现下面的内容-->
+            <li><a href="/register/"><span class="glyphicon glyphicon-user"></span> 注册</a></li>      <!--导航条点击注册跳转至注册页面-->
+            <li><a href="/login/"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>   <!--导航条点击登陆跳转至登陆页面-->
+            {% endif %}
+        </ul>
+    </div>
+    </nav>
